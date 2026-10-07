@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f1e9" />
+  <meta name="description" content="探索人氣動畫作品、製作公司、創作者和類型，以繁體中文打造的動畫作品圖鑑。" />
+  <title>OTAKU INDEX 1.5 — 動畫作品圖鑑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◎</span><span>OTAKU<br><b>INDEX</b></span></div>
+      <nav><a class="active" href="#catalog">圖鑑 <small>CATALOG</small></a><a href="#genres">類型誌 <small>GENRES</small></a><a href="#about">關於 <small>ABOUT</small></a></nav>
+      <div class="top-actions"><span class="status-dot"></span><span>DATABASE / VER 1.5</span><button class="icon-btn" id="randomBtn" aria-label="隨機作品" title="隨機探索">✦</button><button class="icon-btn theme-btn" id="themeBtn" aria-label="切換色彩主題" title="切換色彩主題">◐</button></div>
+    </header>
+
+    <main>
+      <section class="hero" id="about">
+        <div class="hero-copy"><div class="eyebrow">日漫資料庫 · THE ANIME ARCHIVE · VOL. 1.5</div><h1>一千個世界，<br><em>一張</em>圖鑑。</h1><p>由 AniList 即時整理人氣動畫作品，探索各作品的主創、製作公司與播映資料。<br><span class="en-copy">Explore popular anime, creators, studios and broadcast details, powered by AniList.</span></p><div class="hero-meta"><span><strong id="heroCount">—</strong> 部人氣動畫 · TITLES</span><span><strong>24</strong> 種類型 · GENRES</span><span><strong id="yearRange">—</strong> 年代 · YEARS</span></div><a class="hero-cta" href="#catalog">開始探索 <span>↘</span></a></div>
+        <div class="hero-art"><div class="sun"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="hero-card card-back"></div><div class="hero-card card-front"><div class="card-label">FEATURED / 001</div><div class="card-title">葬送的<br>芙莉蓮</div><div class="card-foot">FRIEREN · 2023</div></div><div class="scribble">旅の記録<br>— 1000</div></div>
+      </section>
+
+      <section class="catalog" id="catalog">
+        <div class="section-heading"><div><div class="eyebrow">探索資料庫 · EXPLORE THE ARCHIVE</div><h2>作品索引 <span>/ CATALOG · 1,000</span></h2></div><button class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="controls">篩選器 <small>FILTERS</small> <span>＋</span></button></div>
+        <div class="catalog-tabs" role="tablist" aria-label="作品清單"><button class="catalog-tab active" data-view="all" role="tab" aria-selected="true">全部作品 <span id="allTabCount">0</span></button><button class="catalog-tab" data-view="trending" role="tab" aria-selected="false">人氣作品 <span>↗</span></button><button class="catalog-tab" data-view="recent" role="tab" aria-selected="false">近年新番 <span>2020+</span></button><button class="catalog-tab" data-view="favorites" role="tab" aria-selected="false">我的收藏 <span id="favoriteCount">0</span></button></div>
+        <div class="controls" id="controls"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="搜尋作品、作者、出版社…  Search titles, creators, studios…" /><kbd>⌘ K</kbd></label><div class="select-wrap"><select id="genreSelect"><option value="all">所有類型 · All genres</option></select></div><div class="select-wrap"><select id="yearSelect"><option value="all">所有年代 · All years</option><option value="2020">2020 年代 · 2020s</option><option value="2010">2010 年代 · 2010s</option><option value="2000">2000 年代 · 2000s</option><option value="1990">1990 年代 · 1990s</option><option value="classic">更早 · Classic</option></select></div><div class="select-wrap"><select id="formatSelect"><option value="all">所有格式</option><option value="TV">電視動畫</option><option value="MOVIE">劇場版</option><option value="OVA">OVA</option><option value="ONA">網絡動畫</option><option value="SPECIAL">特別篇</option></select></div><button class="sort-btn" id="sortBtn">最新推出 <span>↕</span></button></div>
+        <div class="active-filters" id="activeFilters"></div>
+        <div class="result-line"><span id="resultCount">顯示 12 部作品</span><span class="mono">SCROLL TO DISCOVER ↓</span></div>
+        <div class="anime-grid" id="animeGrid"></div>
+        <button class="load-more" id="loadMore">載入更多作品 <span>＋</span></button>
+      </section>
+
+      <section class="genres" id="genres"><div class="section-heading"><div><div class="eyebrow">類型指南 · A FIELD GUIDE TO GENRES</div><h2>類型誌 <span>/ GENRE GUIDE</span></h2></div><span class="mono">24 類型 / 1,000 TITLES</span></div><div class="genre-wall" id="genreWall"></div></section>
+    </main>
+    <footer><div class="brand small"><span class="brand-mark">◎</span><span>OTAKU <b>INDEX</b></span></div><span>一份給每一個故事的索引。</span><span class="mono">BUILT FOR THE CURIOUS · VER 1.5</span></footer>
+  </div>
+  <div class="modal-backdrop" id="modal"><article class="detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"></article></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
